@@ -1,0 +1,52 @@
+propel:
+  ### Directories and Filenames ###
+  paths:
+    #Directory where the project files (`schema.xml`, etc.) are located.
+    # Default value is current path #
+    #projectDir:  {current_path}|string
+
+    # The directory where Propel expects to find your `schema.xml` file.
+    #schemaDir: {current_path}|string
+    schemaDir: config
+    # The directory where Propel should output classes, sql, config, etc.
+    # Default value is current path #
+    #outputDir: {current_path}|string
+
+    # The directory where Propel should output generated object model classes.
+    #phpDir: {current-path/generated-classes}|string
+    #phpDir: ..\module\Application\src\Entity
+    phpDir: ..\module\
+
+    # The directory where Propel should output the compiled runtime configuration.
+    #phpConfDir: {current-path/generated-conf}|string
+ 
+    # The directory where Propel should output the generated DDL (or data insert statements, etc.)
+    #sqlDir: {current-path/generated-sql}|string
+
+    # Directory in which your composer.json resides
+    #composerDir: {empty}|string
+    composerDir: ..\..\vendor\propel\propel
+
+  database:
+    connections:
+      bookstore:
+        adapter: mysql
+        classname: Propel\Runtime\Connection\ConnectionWrapper
+        dsn: "mysql:host=localhost;dbname=bookstore"
+        user: root
+        password:
+        attributes:		  
+        settings:
+          charset: utf8mb4
+          queries:
+            utf8: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci, COLLATION_CONNECTION = utf8mb4_unicode_ci, COLLATION_DATABASE = utf8mb4_unicode_ci, COLLATION_SERVER = utf8mb4_unicode_ci"
+  runtime:
+      defaultConnection: bookstore
+      connections:
+          - bookstore
+  generator:
+      schema:
+        #autoNamespace: false
+      defaultConnection: bookstore
+      connections:
+          - bookstore
